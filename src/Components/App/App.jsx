@@ -1,9 +1,19 @@
 import React from 'react';
+import Nav from '../Nav/Nav';
+import './App.css';
 
 class App extends React.Component {
     render() {
         return (
-            <h1>This is a typing application</h1>
+            <div className="app">
+                {/* Nav Section */}
+                <Nav />
+                {/* Landing page */}
+
+                {/* Challenge Section */}
+
+                {/* Footer */}
+            </div>
         );
     }
 }
