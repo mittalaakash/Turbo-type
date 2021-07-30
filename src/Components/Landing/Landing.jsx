@@ -21,13 +21,8 @@ const Landing = () => {
           />
         </div>
       </div>
-      <div className='landing-left'>
-        <img
-          data-aos='fade-left'
-          className='flash-image'
-          src={turbo}
-          alt='Snail'
-        />
+      <div className='landing-left' data-aos='fade-left'>
+        <img className='flash-image' src={turbo} alt='Snail' />
       </div>
     </div>
   );

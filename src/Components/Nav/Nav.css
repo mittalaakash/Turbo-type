@@ -37,3 +37,7 @@
   text-decoration: none;
   color: #e7e6e7;
 }
+
+.nav-link:hover {
+  color: #7ba4fb;
+}
