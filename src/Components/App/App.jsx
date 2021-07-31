@@ -4,6 +4,7 @@ import Footer from '../Footer/Footer';
 import Landing from '../Landing/Landing';
 import Nav from '../Nav/Nav';
 import './App.css';
+import { paragraphs } from '../../data/paragraphs';
 
 const totalTime = 60;
 const serviceUrl = 'https://shrouded-shore-94383.herokuapp.com/paragraphs/1/9';
@@ -21,20 +22,31 @@ class App extends React.Component {
   state = defaultState;
 
   fetchNewPara = () => {
-    fetch(serviceUrl)
-      .then(response => response.text())
-      .then(data => {
-        this.setState({ selectedParagraph: data });
-        const selectedParagraphArray = data.split('');
-        const testInfo = selectedParagraphArray.map(letter => {
-          return {
-            testLetter: letter,
-            status: 'notAttempted',
-          };
-        });
-        this.setState({ ...defaultState, testInfo, selectedParagraph: data });
-      });
+    const data = paragraphs[Math.floor(Math.random() * paragraphs.length)];
+    const selectedParagraphArray = data.split('');
+    const testInfo = selectedParagraphArray.map(letter => {
+      return {
+        testLetter: letter,
+        status: 'notAttempted',
+      };
+    });
+    this.setState({ ...defaultState, testInfo, selectedParagraph: data });
   };
+
+  // fetchNewPara = () => {
+  //   fetch(serviceUrl)
+  //     .then(response => response.text())
+  //     .then(data => {
+  //       const selectedParagraphArray = data.split('');
+  //       const testInfo = selectedParagraphArray.map(letter => {
+  //         return {
+  //           testLetter: letter,
+  //           status: 'notAttempted',
+  //         };
+  //       });
+  //       this.setState({ ...defaultState, testInfo, selectedParagraph: data });
+  //     });
+  // };
 
   componentDidMount() {
     this.fetchNewPara();
