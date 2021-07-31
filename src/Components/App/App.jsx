@@ -11,6 +11,7 @@ const serviceUrl = 'http://metaphorpsum.com/paragraphs/1/9';
 class App extends React.Component {
   state = {
     selectedParagraph: 'My name is Aakash Mittal',
+    testInfo: [],
     timerStarted: false,
     timeRemaining: totalTime,
     words: 0,
@@ -24,9 +25,16 @@ class App extends React.Component {
     //     console.log(data);
     //     this.setState({ selectedParagraph: data });
     //   });
+    const selectedParagraphArray = this.state.selectedParagraph.split('');
+    const testInfo = selectedParagraphArray.map(letter => {
+      return {
+        testLetter: letter,
+        status: 'notAttempted',
+      };
+    });
+    this.setState({ testInfo });
   }
   render() {
-    console.log('render method called');
     return (
       <div className='app'>
         {/* Nav Section */}
@@ -42,6 +50,7 @@ class App extends React.Component {
           wpm={this.state.wpm}
           timeRemaining={this.state.timeRemaining}
           timerStarted={this.state.timerStarted}
+          testInfo={this.state.testInfo}
         />
 
         {/* Footer */}

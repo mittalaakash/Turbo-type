@@ -10,6 +10,7 @@ const TestContainer = ({
   characters,
   timeRemaining,
   timerStarted,
+  testInfo,
 }) => {
   return (
     <div className='test-container'>
@@ -22,6 +23,7 @@ const TestContainer = ({
             characters={characters}
             timeRemaining={timeRemaining}
             timerStarted={timerStarted}
+            testInfo={testInfo}
           />
         </div>
       ) : (
