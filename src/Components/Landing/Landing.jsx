@@ -1,6 +1,6 @@
 import React from 'react';
 import './Landing.css';
-import turbo from '../../assets/turbo.png';
+import turbo from '../../assets/Flash.png';
 import Typewriter from 'typewriter-effect';
 
 const Landing = () => {

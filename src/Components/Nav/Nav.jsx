@@ -1,6 +1,6 @@
 import React from 'react';
 import './Nav.css';
-import logo from '../../assets/turbo-logo.png';
+import logo from '../../assets/logo.png';
 
 const Nav = () => {
   return (
