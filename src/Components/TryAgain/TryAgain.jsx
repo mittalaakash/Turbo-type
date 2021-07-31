@@ -1,7 +1,7 @@
 import React from 'react';
 import './TryAgain.css';
 
-const TryAgain = ({ words, characters, wpm }) => {
+const TryAgain = ({ startAgain, words, characters, wpm }) => {
   const url = 'mittalaakash.netlifyapp.com';
   return (
     <div className='try-again-container'>
@@ -21,7 +21,14 @@ const TryAgain = ({ words, characters, wpm }) => {
         </p>
       </div>
       <div>
-        <button className='end-buttons start-again-btn'>Re-try</button>
+        <button
+          onClick={() => {
+            startAgain();
+          }}
+          className='end-buttons start-again-btn'
+        >
+          Re-try
+        </button>
         <button
           onClick={() =>
             window.open(
