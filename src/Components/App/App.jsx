@@ -7,7 +7,7 @@ import './App.css';
 import { paragraphs } from '../../data/paragraphs';
 
 const totalTime = 60;
-const serviceUrl = 'https://shrouded-shore-94383.herokuapp.com/paragraphs/1/9';
+// const serviceUrl = 'https://shrouded-shore-94383.herokuapp.com/paragraphs/1/9';
 const defaultState = {
   selectedParagraph: '',
   testInfo: [],

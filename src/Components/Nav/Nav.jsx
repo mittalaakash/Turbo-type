@@ -6,8 +6,8 @@ const Nav = () => {
   return (
     <nav className='nav-container'>
       <div className='nav-left'>
-        <img src={logo} alt='logo' className='flash-logo' />
-        <p className='flash-logo-text'>TurboType</p>
+        <img src={logo} alt='logo' className='turbo-logo' />
+        <p className='turbo-logo-text'>TurboType</p>
       </div>
       <div className='nav-right'>
         <a

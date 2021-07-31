@@ -20,15 +20,17 @@
   letter-spacing: 4px;
 }
 
-.flash-image {
+.turbo-image {
   width: 40vw;
+  margin-right: 30px;
 }
 @media (max-width: 800px) {
   .landing-container {
     flex-direction: column;
+    justify-content: space-around;
     align-items: center;
   }
-  .flash-image {
+  .turbo-image {
     width: 80vw;
   }
   .landing-header {

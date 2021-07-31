@@ -18,12 +18,12 @@
   margin-right: 40px;
 }
 
-.flash-logo {
+.turbo-logo {
   margin-left: 20px;
   height: 40px;
 }
 
-.flash-logo-text {
+.turbo-logo-text {
   font-family: 'Bangers', cursive;
   font-size: 50px;
   letter-spacing: 1px;
@@ -32,6 +32,7 @@
 }
 
 .nav-link {
+  font-family: 'Poppins', sans-serif;
   font-size: 32px;
   font-weight: 800;
   text-decoration: none;
