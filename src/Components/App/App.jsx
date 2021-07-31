@@ -5,7 +5,8 @@ import Landing from '../Landing/Landing';
 import Nav from '../Nav/Nav';
 import './App.css';
 
-const totalTime = 2;
+const totalTime = 1;
+const serviceUrl = 'http://metaphorpsum.com/paragraphs/1/9';
 
 class App extends React.Component {
   state = {
@@ -16,8 +17,16 @@ class App extends React.Component {
     characters: 0,
     wpm: 0,
   };
-
+  componentDidMount() {
+    // fetch(serviceUrl)
+    //   .then(response => response.text())
+    //   .then(data => {
+    //     console.log(data);
+    //     this.setState({ selectedParagraph: data });
+    //   });
+  }
   render() {
+    console.log('render method called');
     return (
       <div className='app'>
         {/* Nav Section */}
