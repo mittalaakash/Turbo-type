@@ -6,7 +6,7 @@ import Nav from '../Nav/Nav';
 import './App.css';
 
 const totalTime = 60;
-const serviceUrl = 'http://metaphorpsum.com/paragraphs/1/9';
+const serviceUrl = 'https://shrouded-shore-94383.herokuapp.com/paragraphs/1/9';
 const defaultState = {
   selectedParagraph: '',
   testInfo: [],
