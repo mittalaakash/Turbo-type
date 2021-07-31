@@ -2,9 +2,6 @@ import React from 'react';
 import './Landing.css';
 import turbo from '../../assets/turbo.png';
 import Typewriter from 'typewriter-effect';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-AOS.init();
 
 const Landing = () => {
   return (
