@@ -6,7 +6,7 @@ import Landing from '../Landing/Landing';
 import Nav from '../Nav/Nav';
 import './App.css';
 
-const TotalTime = 1;
+const TotalTime = 60;
 const DefaultState = {
   selectedParagraph: 'Hello World!',
   testInfo: [],
