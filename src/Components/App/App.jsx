@@ -20,7 +20,7 @@ const DefaultState = {
 class App extends React.Component {
   state = DefaultState;
 
-  fetchNewParagraphFallback = () => {
+  fetchNewParagraph = () => {
     const data =
       SAMPLE_PARAGRAPHS[Math.floor(Math.random() * SAMPLE_PARAGRAPHS.length)];
 
@@ -40,34 +40,34 @@ class App extends React.Component {
     });
   };
 
-  fetchNewParagraph = () => {
-    fetch('http://metaphorpsum.com/paragraphs/1/9')
-      .then(response => response.text())
-      .then(data => {
-        // Once the api results are here, break the selectedParagraph into test info
-        const selectedParagraphArray = data.split('');
-        const testInfo = selectedParagraphArray.map(selectedLetter => {
-          return {
-            testLetter: selectedLetter,
-            status: 'notAttempted',
-          };
-        });
+  // fetchNewParagraph = () => {
+  //   fetch('http://metaphorpsum.com/paragraphs/1/9')
+  //     .then(response => response.text())
+  //     .then(data => {
+  //       // Once the api results are here, break the selectedParagraph into test info
+  //       const selectedParagraphArray = data.split('');
+  //       const testInfo = selectedParagraphArray.map(selectedLetter => {
+  //         return {
+  //           testLetter: selectedLetter,
+  //           status: 'notAttempted',
+  //         };
+  //       });
 
-        // Update the testInfo in state
-        this.setState({
-          ...DefaultState,
-          selectedParagraph: data,
-          testInfo,
-        });
-      });
-  };
+  //       // Update the testInfo in state
+  //       this.setState({
+  //         ...DefaultState,
+  //         selectedParagraph: data,
+  //         testInfo,
+  //       });
+  //     });
+  // };
 
   componentDidMount() {
     // As soon as the component mounts, load the selected paragraph from the API
-    this.fetchNewParagraphFallback();
+    this.fetchNewParagraph();
   }
 
-  startAgain = () => this.fetchNewParagraphFallback();
+  startAgain = () => this.fetchNewParagraph();
 
   startTimer = () => {
     this.setState({ timerStarted: true });
