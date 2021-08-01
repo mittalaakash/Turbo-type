@@ -1,65 +1,82 @@
 import React from 'react';
+import { SAMPLE_PARAGRAPHS } from '../../data/sampleParagraphs';
 import ChallengeSection from '../ChallengeSection/ChallengeSection';
 import Footer from '../Footer/Footer';
 import Landing from '../Landing/Landing';
 import Nav from '../Nav/Nav';
 import './App.css';
-import { paragraphs } from '../../data/paragraphs';
 
-const totalTime = 60;
-// const serviceUrl = 'https://shrouded-shore-94383.herokuapp.com/paragraphs/1/9';
-const defaultState = {
-  selectedParagraph: '',
+const TotalTime = 1;
+const DefaultState = {
+  selectedParagraph: 'Hello World!',
   testInfo: [],
   timerStarted: false,
-  timeRemaining: totalTime,
+  timeRemaining: TotalTime,
   words: 0,
   characters: 0,
   wpm: 0,
 };
 
 class App extends React.Component {
-  state = defaultState;
+  state = DefaultState;
 
-  fetchNewPara = () => {
-    const data = paragraphs[Math.floor(Math.random() * paragraphs.length)];
+  fetchNewParagraphFallback = () => {
+    const data =
+      SAMPLE_PARAGRAPHS[Math.floor(Math.random() * SAMPLE_PARAGRAPHS.length)];
+
     const selectedParagraphArray = data.split('');
-    const testInfo = selectedParagraphArray.map(letter => {
+    const testInfo = selectedParagraphArray.map(selectedLetter => {
       return {
-        testLetter: letter,
+        testLetter: selectedLetter,
         status: 'notAttempted',
       };
     });
-    this.setState({ ...defaultState, testInfo, selectedParagraph: data });
+
+    // Update the testInfo in state
+    this.setState({
+      ...DefaultState,
+      selectedParagraph: data,
+      testInfo,
+    });
   };
 
-  // fetchNewPara = () => {
-  //   fetch(serviceUrl)
-  //     .then(response => response.text())
-  //     .then(data => {
-  //       const selectedParagraphArray = data.split('');
-  //       const testInfo = selectedParagraphArray.map(letter => {
-  //         return {
-  //           testLetter: letter,
-  //           status: 'notAttempted',
-  //         };
-  //       });
-  //       this.setState({ ...defaultState, testInfo, selectedParagraph: data });
-  //     });
-  // };
+  fetchNewParagraph = () => {
+    fetch('http://metaphorpsum.com/paragraphs/1/9')
+      .then(response => response.text())
+      .then(data => {
+        // Once the api results are here, break the selectedParagraph into test info
+        const selectedParagraphArray = data.split('');
+        const testInfo = selectedParagraphArray.map(selectedLetter => {
+          return {
+            testLetter: selectedLetter,
+            status: 'notAttempted',
+          };
+        });
+
+        // Update the testInfo in state
+        this.setState({
+          ...DefaultState,
+          selectedParagraph: data,
+          testInfo,
+        });
+      });
+  };
 
   componentDidMount() {
-    this.fetchNewPara();
+    // As soon as the component mounts, load the selected paragraph from the API
+    this.fetchNewParagraphFallback();
   }
+
+  startAgain = () => this.fetchNewParagraphFallback();
 
   startTimer = () => {
     this.setState({ timerStarted: true });
     const timer = setInterval(() => {
       if (this.state.timeRemaining > 0) {
-        //change the wpm
-        const timeSpent = totalTime - this.state.timeRemaining;
+        // Change the WPM and Time Remaining
+        const timeSpent = TotalTime - this.state.timeRemaining;
         const wpm =
-          timeSpent > 0 ? (this.state.words / timeSpent) * totalTime : 0;
+          timeSpent > 0 ? (this.state.words / timeSpent) * TotalTime : 0;
         this.setState({
           timeRemaining: this.state.timeRemaining - 1,
           wpm: parseInt(wpm),
@@ -69,8 +86,6 @@ class App extends React.Component {
       }
     }, 1000);
   };
-
-  startAgain = () => this.fetchNewPara();
 
   handleUserInput = inputValue => {
     if (!this.state.timerStarted) this.startTimer();
@@ -97,22 +112,29 @@ class App extends React.Component {
 
     if (index < 0) {
       const testArr = this.state.testInfo.map(element => {
-        return { testLetter: element.testLetter, status: 'notAttempted' };
+        return {
+          testLetter: element.testLetter,
+          status: 'notAttempted',
+        };
       });
       this.setState({
         testInfo: testArr,
-        words,
         characters,
+        words,
       });
+
       return;
     }
 
     if (index >= this.state.selectedParagraph.length) {
-      this.setState({ characters, words });
+      this.setState({
+        characters,
+        words,
+      });
       return;
     }
 
-    // Make a copy of testinfo
+    // Make a copy
     const testInfo = this.state.testInfo;
     if (!(index === this.state.selectedParagraph.length - 1))
       testInfo[index + 1].status = 'notAttempted';
@@ -138,13 +160,13 @@ class App extends React.Component {
         <Landing />
         <ChallengeSection
           selectedParagraph={this.state.selectedParagraph}
+          testInfo={this.state.testInfo}
+          onInputChange={this.handleUserInput}
           words={this.state.words}
           characters={this.state.characters}
           wpm={this.state.wpm}
           timeRemaining={this.state.timeRemaining}
           timerStarted={this.state.timerStarted}
-          testInfo={this.state.testInfo}
-          onInputChange={this.handleUserInput}
           startAgain={this.startAgain}
         />
         <Footer />

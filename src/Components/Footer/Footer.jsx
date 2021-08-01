@@ -5,9 +5,9 @@ const Footer = () => {
   return (
     <div className='footer-container'>
       <a
-        href='https://mittalaakash.netlify.app/'
-        className='footer-link'
         target='_blank'
+        className='footer-link'
+        href='https://mittalaakash.netlify.app/'
         rel='noreferrer'
       >
         Creator
@@ -15,4 +15,5 @@ const Footer = () => {
     </div>
   );
 };
+
 export default Footer;

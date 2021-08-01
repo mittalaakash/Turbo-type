@@ -1,6 +1,7 @@
 .landing-container {
   display: flex;
   min-height: 90vh;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   color: #eee2ee;
@@ -12,32 +13,35 @@
 
 .landing-header {
   font-size: 92px;
-  letter-spacing: 4px;
   margin: 0;
+  letter-spacing: 4px;
 }
+
 .typewriter-container {
   font-size: 64px;
-  letter-spacing: 4px;
+  letter-spacing: 2px;
 }
 
 .turbo-image {
   width: 40vw;
-  margin-right: 30px;
 }
+
 @media (max-width: 800px) {
   .landing-container {
     flex-direction: column;
-    justify-content: space-around;
     align-items: center;
   }
+
   .turbo-image {
     width: 80vw;
   }
+
   .landing-header {
     margin-top: 32px;
     text-align: center;
   }
+
   .typewriter-container {
     text-align: center;
   }
-} ;
+}

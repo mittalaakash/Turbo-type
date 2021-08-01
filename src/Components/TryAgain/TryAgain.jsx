@@ -1,32 +1,26 @@
 import React from 'react';
 import './TryAgain.css';
 
-const TryAgain = ({ startAgain, words, characters, wpm }) => {
-  const url = 'mittalaakash.netlifyapp.com';
+const TryAgain = ({ words, characters, wpm, startAgain }) => {
+  const url = 'https://mittalaakash.github.io/turbotype/';
   return (
-    <div className='try-again-container'>
+    <div data-aos='fade-up' className='try-again-container'>
       <h1>Test Results</h1>
+
       <div className='result-container'>
         <p>
-          <b>Characters: </b>
-          {characters}
+          <b>Characters:</b> {characters}
         </p>
         <p>
-          <b>Words: </b>
-          {words}
+          <b>Words:</b> {words}
         </p>
         <p>
-          <b>Speed: </b>
-          {wpm} wpm
+          <b>Speed</b> {wpm} wpm
         </p>
       </div>
+
       <div>
-        <button
-          onClick={() => {
-            startAgain();
-          }}
-          className='end-buttons start-again-btn'
-        >
+        <button onClick={startAgain} className='end-buttons start-again-btn'>
           Re-try
         </button>
         <button
@@ -58,4 +52,5 @@ const TryAgain = ({ startAgain, words, characters, wpm }) => {
     </div>
   );
 };
+
 export default TryAgain;

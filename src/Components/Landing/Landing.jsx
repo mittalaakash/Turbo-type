@@ -1,13 +1,14 @@
 import React from 'react';
-import './Landing.css';
-import turbo from '../../assets/Flash.png';
 import Typewriter from 'typewriter-effect';
+
+import './Landing.css';
+import turbo from './../../assets/turbo.png';
 
 const Landing = () => {
   return (
     <div className='landing-container'>
-      <div className='landing-left' data-aos='fade-right'>
-        <h1 className='landing-header'>Can you type...</h1>
+      <div data-aos='fade-right' className='landing-left'>
+        <h1 className='landing-header'>Can you type</h1>
         <div className='typewriter-container'>
           <Typewriter
             options={{
@@ -18,10 +19,16 @@ const Landing = () => {
           />
         </div>
       </div>
-      <div className='landing-right' data-aos='fade-left'>
-        <img className='turbo-image' src={turbo} alt='Snail' />
+      <div className='landing-right'>
+        <img
+          data-aos='fade-left'
+          className='turbo-image'
+          src={turbo}
+          alt='turbo'
+        />
       </div>
     </div>
   );
 };
+
 export default Landing;
